@@ -116,7 +116,7 @@ def make_keys():
     Each key is a 2-tuple of (modulus, factor)
     """
     print "Generating keys... this may take a while"
-    p, q = get_primes(1000, 10000)
+    p, q = get_primes(10000, 100000)
     d, e = make_keys_from_primes(p, q)
     return d, e
 
@@ -125,13 +125,8 @@ def crypt_number((n, d_or_e), number_message):
     This is the inverse operation of using crypt_number() with the other key 
     from the same pair. 
     """
-    # Return message ** d mod n
-    # To reduce calculate time, compute message ** d one multiplication
-    # at a time, taking modulus n each step'
-    new_number_message = 1
-    for i in range(d_or_e): # exponent d_or_e is counting the number of multiplications.
-        new_number_message = (new_number_message * number_message) % n
-    return new_number_message 
+    return pow(number_message, d_or_e, n)
+    
 
 def use_key((n, d_or_e), number_message, chunk_size=4):
     """ use_key() transforms a message with the (n, d_or_e) key. 
