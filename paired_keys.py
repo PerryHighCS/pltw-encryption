@@ -250,5 +250,7 @@ def crack(msg, (pubmod, d_or_e)):
         try:
             nummsg = use_key((pubmod, n), msg)
             print ((pubmod, n), denumerize2(nummsg))
+        except KeyboardInterrupt as e:
+            raise KeyboardInterrupt(e)
         except:
             pass
