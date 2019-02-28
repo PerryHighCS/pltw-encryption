@@ -153,9 +153,9 @@ def use_key((n, d_or_e), number_message, chunk_size=4):
 #####
 
 def letter_to_number(letter):
-    """ Turn one character into a number 01-99
+    """ Turn one character into a number 01-95
     """
-    return ord(letter)-26 # so that all keyboard symbols are 0-99
+    return ord(letter)-31 # so that all keyboard symbols are 1-95
 
 def letters_to_numberstring(string):
     """ Returns a string of digits from a string of letters,
@@ -191,12 +191,12 @@ def numerize(string, chunk_size=2):
     return numerized
 
 def number_to_letter(number):
-    """ Turn one number 01-99 into one character
+    """ Turn one number 01-95 into one character
     """
-    if (number > 99):
+    if (number == 0 or number > 95):
         raise Exception("Invalid number")
         
-    return chr(number+26)
+    return chr(number+31)
 
 def denumerize(numberstring):
     """Reverses the effect of numerize(), turning a sequence of two-digit
