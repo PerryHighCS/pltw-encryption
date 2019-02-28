@@ -116,7 +116,7 @@ def make_keys():
     Each key is a 2-tuple of (modulus, factor)
     """
     print "Generating keys... this may take a while"
-    p, q = get_primes(10000, 100000)
+    p, q = get_primes(1000, 10000)
     d, e = make_keys_from_primes(p, q)
     return d, e
 
