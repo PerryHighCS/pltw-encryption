@@ -193,6 +193,9 @@ def numerize(string, chunk_size=2):
 def number_to_letter(number):
     """ Turn one number 01-99 into one character
     """
+    if (number > 99):
+        raise Exception("Invalid number")
+        
     return chr(number+26)
 
 def denumerize(numberstring):
@@ -243,7 +246,7 @@ def decrypt(msg, your_public_key):
     return denumerize(nummsg)
     
 def crack(msg, (pubmod, d_or_e)):
-    for n in range (pubmod):
+    for n in range (0, pubmod):
         try:
             nummsg = use_key((pubmod, n), msg)
             print denumerize2(nummsg)
