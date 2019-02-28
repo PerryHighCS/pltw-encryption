@@ -247,7 +247,7 @@ def decrypt(msg, your_public_key):
     return denumerize(nummsg)
     
 def crack(msg, (pubmod, d_or_e)):
-    for n in range (0, pubmod):
+    for n in xrange (0, pubmod):
         try:
             nummsg = use_key((pubmod, n), msg)
             print ((pubmod, n), denumerize2(nummsg))
