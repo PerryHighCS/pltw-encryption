@@ -212,7 +212,22 @@ def denumerize(numberstring):
                 return numberstring
     return string                
     
-
+def denumerize2(numberstring):
+    """Reverses the effect of numerize(), turning a sequence of two-digit
+    numbers into characters, dropping the hyphens between digits.
+    """
+    string=""
+    while len(numberstring)>0:
+        if numberstring[0]=="-":
+            numberstring = numberstring[1:]
+        else:
+            try:
+                string += number_to_letter(int(numberstring[:2]))
+                numberstring = numberstring[2:]
+            except:
+                raise Exception("Could not parse string")
+    return string                
+    
 #####
 # Simplified encryption steps
 #####
@@ -226,3 +241,13 @@ def decrypt(msg, your_public_key):
     ''' Decrypt a message using your private key '''
     nummsg = use_key(your_public_key, msg)
     return denumerize(nummsg)
+    
+def crack(msg, (pubmod, d_or_e)):
+    found = ""
+    for n in range (pubmod):
+        try:
+            nummsg = use_key((pubmod, n), msg)
+            print denumerize2(nummsg)
+        except:
+            pass
+    return found
