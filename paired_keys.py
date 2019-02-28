@@ -249,6 +249,6 @@ def crack(msg, (pubmod, d_or_e)):
     for n in range (0, pubmod):
         try:
             nummsg = use_key((pubmod, n), msg)
-            print denumerize2(nummsg)
+            print ((pubmod, n), denumerize2(nummsg))
         except:
             pass
