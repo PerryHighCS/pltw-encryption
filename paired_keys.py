@@ -243,11 +243,9 @@ def decrypt(msg, your_public_key):
     return denumerize(nummsg)
     
 def crack(msg, (pubmod, d_or_e)):
-    found = ""
     for n in range (pubmod):
         try:
             nummsg = use_key((pubmod, n), msg)
             print denumerize2(nummsg)
         except:
             pass
-    return found
