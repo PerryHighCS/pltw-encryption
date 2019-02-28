@@ -211,3 +211,18 @@ def denumerize(numberstring):
                 print("Oops! Could not parse string. Please check your decryption step.")
                 return numberstring
     return string                
+    
+
+#####
+# Simplified encryption steps
+#####
+
+def encrypt(msg, their_public_key):
+    ''' Encrypt a message using the recipient's public key '''
+    nummsg = numerize(msg)
+    return use_key(their_public_key, nummsg)
+    
+def decrypt(msg, your_public_key):
+    ''' Decrypt a message using your private key '''
+    nummsg = use_key(your_public_key, msg)
+    return denumerize(nummsg)
